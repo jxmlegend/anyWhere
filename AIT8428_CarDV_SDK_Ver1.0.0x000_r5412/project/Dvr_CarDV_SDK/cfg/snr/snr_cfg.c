@@ -76,7 +76,7 @@ SCD_CAM_ID sScdCam = SCD_CAM_NONE;
 //USB_CAM_ID sUSBCam = USB_CAM_NONE;
 //USB_CAM_ID sUSBCam = USB_CAM_AIT;
 //USB_CAM_ID sUSBCam = USB_CAM_SONIX_MJPEG;
-USB_CAM_ID sUSBCam = USB_CAM_SONIX_MJPEG2H264;
+USB_CAM_ID sUSBCam = USB_CAM_NONE;
 
 //==============================================================================
 //
