@@ -1,0 +1,14 @@
+Create SDK MCP:
+- Copy mini_boot.mcp from mini_boot
+- Sync LD settinfs from mini_boot
+
+- SDK_mini_boot\mini_boot.mcp (MCR_V2 Target)
+  de-select
+  \core\src\common
+  \core\src\drv\sys
+ 
+  re-select
+  \core\src\common\bsp\cstartup_ram.s
+
+  add LIB files
+  \core\lib\mini_boot.a (MCR_V2)  
