@@ -1,0 +1,9 @@
+
+========================================================================
+
+** Object/Image Component Sizes
+
+
+      Code  (inc. data)  RO Data    RW Data    ZI Data      Debug   File Name
+
+    120908       6790          0        572      32448     451776   .\CPUB_Data\MCR_V2\CPUB.axf

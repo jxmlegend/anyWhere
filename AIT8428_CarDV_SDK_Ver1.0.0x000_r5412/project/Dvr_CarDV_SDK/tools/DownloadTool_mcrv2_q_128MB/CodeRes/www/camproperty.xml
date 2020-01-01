@@ -1,0 +1,10 @@
+<camera xmlns="urn:schemas-ait-dvr:device-1-0">
+	<version>0.1</version>
+	<camtype>CarCam</camtype>
+	<filefolder type="Standard">
+		<folder>Normal</folder>
+		<folder>Photo</folder>
+		<folder>Event</folder>
+		<folder>Parking</folder>
+	</filefolder>
+</camera>	

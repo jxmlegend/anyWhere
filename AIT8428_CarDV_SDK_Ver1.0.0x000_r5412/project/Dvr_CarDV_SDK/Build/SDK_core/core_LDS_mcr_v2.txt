@@ -1,0 +1,140 @@
+; 2MB, using only 1MB
+ALL_DRAM    0x01000000  0x02000000
+{
+    RESET       0x01000000  0x000000F4
+    {
+    	 cstartup*.o         (reset, +FIRST)
+    }
+
+    CPU_B_FW    +0x0
+    {
+        *.o             (CPUB_FW)
+    }
+
+	CPU_COMM_MODULE_INIT    +0x0
+    {
+		*.o             (CpuCommModuleInit)
+    }
+
+	CPU_COMM_MODULE_EXIT    +0x0
+    {
+		*.o             (CpuCommModuleExit)
+    }
+    
+   ; NETNODE_INIT    +0x0
+    ;{
+  ;  	amnss_ucos.o		(netnode_init, +FIRST)
+  ;      *.o					(netnode_init)
+  ;  }
+  ;  
+  ;  NETCGI_INIT     +0x0
+  ;  {
+  ;  	cgi_main.o			(netcgi_init, +FIRST)
+  ;      *.o			 		(netcgi_init)
+  ;  }
+    
+    MODULE_INIT     +0x0
+    {
+        *.o  (initcall1)
+       ; *.o  (initcall2)
+       ; *.o  (initcall3)
+       ; *.o  (initcall4)
+       ; *.o  (initcall5)
+        *.o  (initcall6)
+       ; *.o  (initcall7)                                                             
+    }
+
+    ALL_DRAM_RO +0x0
+    {
+        .ANY            (+RO)
+    }
+
+    ALL_DRAM_RW +0x0
+    {
+        .ANY            (+RW)
+    }
+
+    ALL_DRAM +0x0
+    {
+        .ANY            (+ZI)
+    }
+
+    ITCM_EXE    0x00000000  0x00002000
+	{
+	    vector.o            (vector, +FIRST)
+	    cstartup*.o         (+RO,+RW)
+	    bsp*.o              (+RO,+RW)
+		;mmpf_pll.o          (PLLAsync)
+		mmpf_dram.o         (EnterSelfSleepMode)
+		mmpf_system.o       (EnterSelfSleepMode)
+	    *.o			(itcm_wldrv)
+	}
+	
+    DTCM_BOOT   0x00080000  0x00000020  ; DTCM 32-byte
+    {
+        ; for booting parameters
+        .ANY                (dummy)
+    }
+
+	DTCM_EXE    0x00080020  0x0000FE0
+    {
+         ;mmpf_pll.o         (ChangePLL_DTCM)
+         bsp*.o             (+ZI)
+    }
+    
+    ; 0x00100000 ~ 0x00104000 reserved for CPU_A MMU table
+    ; 0x00104000 ~ 0x00108000 reserved for CPU_B MMU table
+    ; SRAM size 832KB, last 584KB shared by LDC & H.264
+    ; 256KB for WiFi/Net ,if LDC is disabled, the end of below address must be limited by 0x0016e000
+    ALL_SRAM    0x00108000  0x00040000
+    {
+		*.o				(sram_wldrv)
+		httpreadwrite.o			(NetFileTxSpeedUp)
+		def.o        			(+RO,+RW)
+		init.o        			(+RO,+RW)
+		mem.o        			(+RO,+RW)
+		memp.o        			(+RO,+RW)
+		netif.o        			(+RO,+RW)
+		pbuf.o        			(+RO,+RW)
+		raw.o        			(+RO,+RW)
+		stats.o        			(+RO,+RW)
+		sys.o        			(+RO,+RW)
+		tcp.o        			(+RO,+RW)
+		tcp_in.o        		(+RO,+RW)
+		tcp_out.o        		(+RO,+RW)
+		timers.o        		(+RO,+RW)
+		udp.o        			(+RO,+RW)
+		inet_chksum.o			(+RO,+RW)
+		ip.o					(+RO,+RW)
+		ip_addr.o				(+RO,+RW)
+		ip_frag.o				(+RO,+RW)
+		sys_arch.o        		(+RO,+RW)
+		api_lib.o        		(+RO,+RW)
+		api_msg.o        		(+RO,+RW)
+		netbuf.o        		(+RO,+RW)
+		netdb.o        			(+RO,+RW)
+		sockets.o        		(+RO,+RW)
+		sock.o        			(+RO,+RW)
+		tcpip.o        			(+RO,+RW)
+		etharp.o        		(+RO,+RW)
+		ucos_osl_ext.o        	(+RO,+RW)
+		AHC_SD.o        		(+RO,+RW)
+		mmpf_sd.o        		(SDIOSpeedUp)
+		wlan.o        			(WIFISpeedUp)
+		AHC_OS.o				(+RO,+RW)
+		os_core.o      			(+RO,+RW)
+		os_q.o 					(+RO,+RW)
+		os_sem.o				(+RO,+RW)
+		os_mutex.o				(+RO,+RW)
+		.ANY                	(dummy)
+    }
+}
+
+; (DUMMY)
+TCM_END 0x00082000   0x0
+{
+    TCM_END +0
+    {
+        .ANY                (dummy)
+    }
+}

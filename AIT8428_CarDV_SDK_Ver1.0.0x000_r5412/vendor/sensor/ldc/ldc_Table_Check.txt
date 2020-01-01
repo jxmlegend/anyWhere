@@ -1,0 +1,30 @@
+/* For 1080p Use */
+#include "ldc_LUT_1080p_AR1820_5dist_Mode00.c"		//OK
+#include "ldc_LUT_1080p_AR1820_4dist_Mode11.c"		//OK
+#include "ldc_LUT_1080p_AR1820_4dist_Mode10.c"		//OK
+#include "ldc_LUT_1080p_AR1820_3dist_Mode10.c"    	//OK
+#include "ldc_LUT_1080p_AR1820_2dist_Mode10.c"    	//OK
+#include "ldc_LUT_1080p_AR1820_1dist_Mode10.c"    	//OK
+#include "ldc_LUT_1080p_AR1820_TV-4_X1.05.c"		//OK
+#include "ldc_LUT_1080p_AR1820_TV-4_X1.10.c"		//Fail
+#include "ldc_LUT_1080p_AR1820_TV-4_X1.15.c"		//OK
+#include "ldc_LUT_1080p_AR1820_TV-4_X1.20.c"		//OK
+#include "ldc_LUT_1080p_AR1820_3dist_Mode11.c"		//OK
+
+/* For 720p Use */
+#include "ldc_LUT_720p_AR1820_7d5dist_Mode11.c"		//OK
+#include "ldc_LUT_720p_AR1820_5dist_Mode11.c"		//OK
+#include "ldc_LUT_720p_AR1820_4dist_Mode10.c"		//OK
+#include "ldc_LUT_720p_AR1820_3dist_Mode10.c"		//OK
+#include "ldc_LUT_720p_AR1820_2dist_Mode10.c"		//OK
+#include "ldc_LUT_720p_AR1820_1dist_Mode10.c"		//OK
+
+/* For WVGA Use */
+#include "ldc_LUT_WVGA_AR1820_4dist_Mode10.c"		//OK
+#include "ldc_LUT_WVGA_AR1820_3dist_Mode10.c"		//OK
+#include "ldc_LUT_WVGA_AR1820_2dist_Mode10.c"		//OK
+#include "ldc_LUT_WVGA_AR1820_1dist_Mode10.c"		//OK
+
+/* For Multi-Slice */
+#include "ldc_LUT_1536p_AR0330_MultiSlice.c"		//OK
+#include "ldc_LUT_736To736p_AR0330_MultiSlice_1123.c"	//OK
